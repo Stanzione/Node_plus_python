@@ -7,6 +7,22 @@ app.use(express.json());
 
 var auxiliar;
 
+const spawn2 = require("child_process").spawn;
+
+const iperfServer = spawn2('iperf3', ['-s', '-p 7575']);
+
+iperfServer.stdout.on('data', (data) => {           
+
+    console.log(data.toString());
+});
+
+iperfServer.stderr.on('data', (data) => {
+    
+    console.log(`stderr iperfServer: ${data}`);
+
+    console.log('error');
+});
+
 app.get("/move", (request, response) =>  {
 
     return response.status(200).send("Você está conectado");
@@ -24,8 +40,8 @@ app.post("/move", (request, response) =>  {
     } else {
         
         const spawn = require("child_process").spawn;
-        
-        const pythonProcess = spawn('python', ['src/python_script/script.py', x, y]);
+
+        const pythonProcess = spawn('python', ['src/python_script/script.py', x, y]); 
 
         pythonProcess.stdout.on('data', (data) => {
             
@@ -40,6 +56,8 @@ app.post("/move", (request, response) =>  {
 
             return response.json(x);
         });
+
+
 
  
     }
