@@ -1,4 +1,5 @@
 const { request, response } = require('express');
+
 const express = require('express');
 
 const app = express();
@@ -7,9 +8,9 @@ app.use(express.json());
 
 var auxiliar;
 
-const spawn2 = require("child_process").spawn;
+const spawn2 = require("child_process").exec;
 
-const iperfServer = spawn2('iperf3', ['-s']);
+const iperfServer = spawn2('npm run server');
 
 
 iperfServer.stderr.on('data', (data) => {
