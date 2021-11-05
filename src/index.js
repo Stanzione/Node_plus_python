@@ -14,7 +14,7 @@ const iperfServer = spawn2('iperf3', ['-s']);
 
 iperfServer.stdout.on('data', (data) => {           
 
-    console.log(data.toString());
+    console.log("deu ruim");
 });
 
 iperfServer.stderr.on('data', (data) => {
