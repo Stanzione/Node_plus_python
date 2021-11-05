@@ -9,22 +9,33 @@ var auxiliar;
 
 const spawn2 = require("child_process").spawn;
 
-const iperfServer = spawn2('iperf3', ['-s']);
+try {
+    const iperfServer = spawn2('iperf3', ['-s']);
 
-
-iperfServer.stdout.on('data', (data) => {           
-
-    console.log("deu ruim");
-});
-
-iperfServer.stderr.on('data', (data) => {
+    iperfServer.stderr.on('data', (data) => {
     
-    console.log('foi');
+        console.log('foi');
+    
+        console.log(`stderr iperfServer: ${data}`);
+    
+        console.log('error');
+    });
+    
+    
+    iperfServer.stdout.on('data', (data) => {           
+    
+        console.log(data.toString());
+    });
 
-    console.log(`stderr iperfServer: ${data}`);
 
-    console.log('error');
-});
+} catch (error) {
+    console.log('deu algo de errado');
+}
+
+
+
+
+
 
 app.get("/move", (request, response) =>  {
 
