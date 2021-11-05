@@ -9,7 +9,7 @@ var auxiliar;
 
 const spawn2 = require("child_process").spawn;
 
-/*const iperfServer = spawn2('iperf3', ['-s', `-p ${5000}`]);
+const iperfServer = spawn2('iperf3', ['-s']);
 
 
 iperfServer.stdout.on('data', (data) => {           
@@ -25,7 +25,7 @@ iperfServer.stderr.on('data', (data) => {
 
     console.log('error');
 });
-*/
+
 app.get("/move", (request, response) =>  {
 
     return response.status(200).send("Você está conectado");
