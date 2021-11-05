@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "nodemon src/index.js",
-    "server": "./src/testiperf/iperf-3.1.3-source/iperf-3.1.3/src/iperf3 -s -p 5303"
+    "server": "./src/testiperf/iperf-3.1.3-source/iperf-3.1.3/src/iperf3 -s"
   },
   "keywords": [],
   "author": "",
